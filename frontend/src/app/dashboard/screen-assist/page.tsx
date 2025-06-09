@@ -256,18 +256,18 @@ export default function ScreenAssistPage() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-[#232946] via-[#313866] to-[#a7c7e7] flex flex-col items-center justify-center py-12">
-      <div className="max-w-7xl w-full p-0 bg-gradient-to-br from-[#232946] to-[#393e6e] rounded-2xl shadow-2xl border border-[#232946] animate-fade-in flex flex-row gap-0 overflow-hidden">
+    <div className="min-h-screen w-full bg-gradient-to-br from-[#1e3c72] via-[#2a5298] to-[#fff] flex flex-col items-center justify-center py-12">
+      <div className="max-w-7xl w-full p-0 bg-gradient-to-br from-[#1e3c72] via-[#2a5298] to-[#fff] rounded-2xl shadow-2xl border border-[#1e3c72] animate-fade-in flex flex-row gap-0 overflow-hidden">
         {/* Left: Query Input and Controls */}
-        <div className="w-1/3 flex flex-col gap-6 p-10 bg-[#232946]/80 border-r border-[#393e6e] min-h-[600px] justify-between">
+        <div className="w-1/3 flex flex-col gap-6 p-10 bg-[#2a5298]/80 border-r border-[#1e3c72] min-h-[600px] justify-between">
           <div>
-            <h1 className="text-3xl font-extrabold mb-4 text-[#f6f7fb] tracking-tight flex items-center gap-2">
+            <h1 className="text-3xl font-extrabold mb-4 text-[#fff] tracking-tight flex items-center gap-2">
               <span className="animate-bounce">🪟</span> Screen Assist
             </h1>
-            <p className="text-[#a7adc6] mb-6 text-sm">Capture your screen, scroll automatically, and let ShadowAI analyze everything you see.</p>
-            <label className="block font-semibold mb-2 text-[#a7adc6]">Describe what you’re stuck on <span className="text-[#f4acb7]">(required)</span></label>
+            <p className="text-[#fff]/80 mb-6 text-sm">Capture your screen, scroll automatically, and let SeniorDev AI analyze everything you see.</p>
+            <label className="block font-semibold mb-2 text-[#fff]/80">Describe what you’re stuck on <span className="text-[#fff]/60">(required)</span></label>
             <textarea
-              className="w-full border border-[#393e6e] rounded-lg p-3 bg-[#232946] text-[#f6f7fb] font-mono text-base transition min-h-[80px] focus:outline-none focus:ring-2 focus:ring-[#f4acb7] placeholder:text-[#f4acb7]/60 mb-2"
+              className="w-full border border-[#fff]/40 rounded-lg p-3 bg-[#fff]/80 text-[#1e3c72] font-mono text-base transition min-h-[80px] focus:outline-none focus:ring-2 focus:ring-[#2a5298] placeholder:text-[#2a5298]/60 mb-2"
               rows={4}
               placeholder="Describe what's on your screen or the problem you're facing..."
               value={query}
@@ -276,14 +276,14 @@ export default function ScreenAssistPage() {
             />
             <div className="flex gap-2 mt-2">
               <button
-                className="px-5 py-2 bg-gradient-to-r from-[#f4acb7] to-[#a7c7e7] text-[#232946] font-bold rounded-lg shadow-lg hover:from-[#a7c7e7] hover:to-[#f4acb7] transition disabled:opacity-60 flex items-center gap-2"
+                className="px-5 py-2 bg-gradient-to-r from-[#2a5298] to-[#1e3c72] text-[#fff] font-bold rounded-lg shadow-lg hover:from-[#fff] hover:to-[#2a5298] hover:text-[#2a5298] transition disabled:opacity-60 flex items-center gap-2"
                 onClick={handleStartScreenAssist}
                 disabled={recording || countdown > 0 || !query.trim()}
               >
                 <span className="animate-wiggle">🎥</span> {recording ? 'Recording...' : 'Start Screen Assist'}
               </button>
               <button
-                className="px-4 py-2 bg-[#232946] text-[#a7adc6] rounded border border-[#393e6e] text-xs hover:bg-[#393e6e] transition"
+                className="px-4 py-2 bg-[#fff]/80 text-[#2a5298] rounded border border-[#2a5298] text-xs hover:bg-[#2a5298] hover:text-[#fff] transition"
                 onClick={handleReset}
                 disabled={recording && !error && !analysis && !query}
               >
@@ -291,7 +291,7 @@ export default function ScreenAssistPage() {
               </button>
             </div>
             {countdown > 0 && (
-              <div className="mt-4 text-[#f4acb7] text-base font-semibold animate-fade-in">
+              <div className="mt-4 text-[#fff] text-base font-semibold animate-fade-in">
                 Please switch to your code editor and make sure only your code is visible.<br />
                 <b>Screen sharing will start automatically in {countdown} second{countdown !== 1 ? 's' : ''}...</b>
               </div>
@@ -300,46 +300,46 @@ export default function ScreenAssistPage() {
               <>
                 <video ref={videoRef} className="hidden" autoPlay playsInline muted />
                 <canvas ref={canvasRef} className="hidden" />
-                <div className="text-[#a7adc6] text-sm mt-4">Capturing screen... <b>{progress}</b> frames sent</div>
+                <div className="text-[#fff]/80 text-sm mt-4">Capturing screen... <b>{progress}</b> frames sent</div>
                 {framesDone && (
-                  <div className="mt-2 text-[#f4acb7] text-xs font-semibold">Frame captured! If you have more code, scroll down and click <b>Capture & Analyze</b> again. When done, click <b>Capture & Analyze</b> to finish and analyze.</div>
+                  <div className="mt-2 text-[#fff]/80 text-xs font-semibold">Frame captured! If you have more code, scroll down and click <b>Capture & Analyze</b> again. When done, click <b>Capture & Analyze</b> to finish and analyze.</div>
                 )}
-                <button className="mt-4 px-4 py-1 bg-[#232946] text-[#a7adc6] rounded border border-[#393e6e]" onClick={handleCaptureAnalyze}>Capture & Analyze</button>
+                <button className="mt-4 px-4 py-1 bg-[#fff]/80 text-[#2a5298] rounded border border-[#2a5298]" onClick={handleCaptureAnalyze}>Capture & Analyze</button>
               </>
             )}
             {error && (
-              <div className="mt-4 text-[#ffb4b4] bg-[#393e6e] border border-[#ffb4b4]/30 rounded-lg p-3 font-medium flex items-center gap-2 animate-shake">
+              <div className="mt-4 text-[#fff] bg-[#2a5298] border border-[#fff]/30 rounded-lg p-3 font-medium flex items-center gap-2 animate-shake">
                 <span>❌</span> {error}
               </div>
             )}
-            <div className="text-xs text-[#a7adc6] opacity-70 mt-8">
-              <b>How it works:</b> ShadowAI scrolls your screen, captures frames, and analyzes all visible text/code. No images or videos are stored.
+            <div className="text-xs text-[#fff]/70 opacity-70 mt-8">
+              <b>How it works:</b> SeniorDev AI scrolls your screen, captures frames, and analyzes all visible text/code. No images or videos are stored.
             </div>
-            <div className="text-xs text-[#f4acb7] opacity-90 mt-2">
-              ⚠️ For best results, please select <b>Entire Screen</b> to allow ShadowAI to see your code editor and terminal.
+            <div className="text-xs text-[#fff]/90 opacity-90 mt-2">
+              ⚠️ For best results, please select <b>Entire Screen</b> to allow SeniorDev AI to see your code editor and terminal.
             </div>
-            <div className="text-xs text-[#f4acb7] opacity-90 mt-2">
-              Please scroll manually through your code — ShadowAI will extract visible text frame by frame.
+            <div className="text-xs text-[#fff]/90 opacity-90 mt-2">
+              Please scroll manually through your code — SeniorDev AI will extract visible text frame by frame.
             </div>
           </div>
         </div>
         {/* Right: Response area, now much wider */}
-        <div className="w-2/3 flex flex-col justify-center items-center p-10 bg-[#393e6e]/80 min-h-[600px] h-full">
+        <div className="w-2/3 flex flex-col justify-center items-center p-10 bg-gradient-to-br from-[#fff] via-[#e3ecfa] to-[#c7d6f7] min-h-[600px] h-full">
           {loading && (
-            <div className="flex items-center gap-2 text-[#a7adc6] text-base animate-fade-in">
+            <div className="flex items-center gap-2 text-[#2a5298] text-base animate-fade-in">
               <span className="animate-spin inline-block text-xl">🧠</span> Analyzing captured text with Claude...
             </div>
           )}
           {simple && !loading && (
             <div
               ref={outputRef}
-              className="w-full h-full bg-gradient-to-br from-[#232946] to-[#393e6e] p-8 rounded-2xl border border-[#f4acb7] shadow-lg animate-fade-in relative flex flex-col justify-start"
+              className="w-full h-full bg-[#fff]/90 p-8 rounded-2xl border border-[#2a5298] shadow-lg animate-fade-in relative flex flex-col justify-start"
               style={{ minHeight: '300px', maxHeight: '100%', overflow: 'auto' }}
             >
               <div className="flex items-center justify-between mb-4 w-full">
-                <h2 className="font-semibold text-[#f4acb7] text-lg">AI Help</h2>
+                <h2 className="font-semibold text-[#2a5298] text-lg">AI Help</h2>
                 <button
-                  className={`px-4 py-1 text-xs font-semibold rounded transition flex items-center gap-1 ${copied ? 'bg-[#a7e7c7] text-[#232946]' : 'bg-[#f4acb7] text-[#232946] hover:bg-[#a7c7e7]'}`}
+                  className={`px-4 py-1 text-xs font-semibold rounded transition flex items-center gap-1 ${copied ? 'bg-[#a7e7c7] text-[#232946]' : 'bg-[#2a5298] text-[#fff] hover:bg-[#fff] hover:text-[#2a5298]'}`}
                   onClick={handleCopy}
                   title="Copy to clipboard"
                 >
@@ -352,7 +352,7 @@ export default function ScreenAssistPage() {
                   )}
                 </button>
               </div>
-              <div className="text-[#f6f7fb] text-base w-full" style={{whiteSpace: 'pre-wrap', wordBreak: 'break-word'}}>{simple}</div>
+              <div className="text-[#1e293b] text-base w-full" style={{whiteSpace: 'pre-wrap', wordBreak: 'break-word'}}>{simple}</div>
             </div>
           )}
         </div>

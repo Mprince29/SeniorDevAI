@@ -1,4 +1,4 @@
-// File: /Users/mprince/Desktop/ai-dev assistant/frontend/src/app/gitops/page.tsx
+// File: /Users/personal/Desktop/My Projects/ShadowAI/frontend/src/app/gitops/page.tsx
 import * as entry from '../../../../src/app/gitops/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,4 +1,4 @@
-// File: /Users/mprince/Desktop/ai-dev assistant/frontend/src/app/layout.tsx
+// File: /Users/personal/Desktop/My Projects/ShadowAI/frontend/src/app/layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

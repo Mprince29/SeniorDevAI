@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import { useState } from 'react';
 
 const MODES = [
@@ -8,7 +9,7 @@ const MODES = [
 	{ label: 'Modern ES6+ style', value: 'modern' },
 ];
 
-export default function RefactorPage() {
+export default function Refactor() {
 	const [text, setText] = useState('');
 	const [output, setOutput] = useState('');
 	const [mode, setMode] = useState(MODES[0].value);
@@ -52,41 +53,33 @@ export default function RefactorPage() {
 	};
 
 	return (
-		<div className="min-h-screen w-full bg-gradient-to-br from-[#232946] via-[#313866] to-[#a7c7e7] flex items-center justify-center py-12">
-			<div className="max-w-2xl w-full p-8 bg-gradient-to-br from-[#232946] to-[#393e6e] rounded-2xl shadow-2xl border border-[#232946] animate-fade-in">
-				<h1 className="text-3xl font-extrabold mb-6 text-[#f6f7fb] tracking-tight flex items-center gap-2">
-					<span className="animate-bounce">🛠️</span> Refactor Code
-				</h1>
-				<div className="mb-5">
-					<label className="block font-semibold mb-2 text-[#a7adc6]">
-						Refactor Mode
-					</label>
-					<select
-						className="w-full border border-[#393e6e] rounded-lg p-2 bg-[#232946] text-[#f6f7fb] focus:outline-none focus:ring-2 focus:ring-[#f4acb7] transition"
-						value={mode}
-						onChange={(e) => setMode(e.target.value)}
-					>
-						{MODES.map((m) => (
-							<option
-								key={m.value}
-								value={m.value}
-								className="bg-[#232946] text-[#f6f7fb]"
-							>
-								{m.label}
-							</option>
-						))}
-					</select>
+		<div className="min-h-screen w-full bg-gradient-to-br from-[#1e3c72] via-[#2a5298] to-[#fff] flex flex-col">
+			{/* Header */}
+			<header className="w-full flex justify-between items-center px-8 py-6 bg-[#1e293b]/90 shadow-md">
+				<div className="flex items-center gap-3">
+					<span className="text-2xl text-[#fff] font-extrabold tracking-tight">SeniorDev AI</span>
+					<span className="text-base text-[#fff]/60 font-mono tracking-widest hidden sm:inline">| Refactor</span>
 				</div>
-				<textarea
-					className="w-full border border-[#393e6e] rounded-lg p-3 bg-[#232946] text-[#f6f7fb] font-mono text-base transition min-h-[160px] focus:outline-none focus:ring-2 focus:ring-[#f4acb7] placeholder:text-[#f4acb7]/60"
-					rows={10}
-					placeholder="Paste your code here... 💡"
-					value={text}
-					onChange={(e) => setText(e.target.value)}
-				/>
-				<div className="flex gap-3 mt-5">
+				<nav>
+					<Link href="/dashboard" className="text-[#fff] hover:text-[#2a5298] font-bold transition">Dashboard</Link>
+				</nav>
+			</header>
+
+			{/* Main Content */}
+			<main className="flex-1 flex flex-col md:flex-row items-center justify-center gap-12 px-8 py-12">
+				<section className="flex-1 bg-[#fff]/20 rounded-2xl shadow-xl border border-[#fff]/30 p-8 flex flex-col justify-center items-start max-w-xl">
+					<h1 className="text-4xl font-extrabold text-[#1e293b] mb-4">Refactor Instantly</h1>
+					<p className="text-lg text-[#1e293b]/80 mb-6">
+						Paste your code below and let <span className="font-bold text-[#2a5298]">SeniorDev AI</span> transform it into clean, efficient, and readable code. Supports multiple languages and frameworks.
+					</p>
+					<textarea
+						className="w-full min-h-[180px] rounded-lg border border-[#2a5298] p-4 text-base font-mono bg-[#fff]/80 mb-4 focus:outline-none focus:ring-2 focus:ring-[#2a5298] transition"
+						placeholder="Paste your code here..."
+						value={text}
+						onChange={(e) => setText(e.target.value)}
+					/>
 					<button
-						className="px-5 py-2 bg-gradient-to-r from-[#f4acb7] to-[#a7c7e7] text-[#232946] font-bold rounded-lg shadow-lg hover:from-[#a7c7e7] hover:to-[#f4acb7] transition disabled:opacity-60 flex items-center gap-2"
+						className="bg-[#2a5298] hover:bg-[#fff] text-[#fff] hover:text-[#2a5298] font-bold px-8 py-3 rounded-lg shadow transition border border-[#2a5298] hover:scale-105"
 						onClick={handleSubmit}
 						disabled={loading || !text.trim()}
 					>
@@ -119,94 +112,16 @@ export default function RefactorPage() {
 							</>
 						)}
 					</button>
-					<button
-						className="px-5 py-2 bg-[#232946] text-[#a7adc6] font-semibold rounded-lg border border-[#393e6e] hover:bg-[#393e6e] transition"
-						onClick={handleReset}
-						disabled={loading && !text && !output}
-					>
-						<span className="mr-1">♻️</span>Reset
-					</button>
-				</div>
-				{error && (
-					<div className="mt-5 text-[#ffb4b4] bg-[#393e6e] border border-[#ffb4b4]/30 rounded-lg p-3 font-medium flex items-center gap-2 animate-shake">
-						<span>❌</span> {error}
+				</section>
+				<aside className="flex-1 flex flex-col items-center justify-center">
+					<div className="bg-[#2a5298]/90 rounded-2xl shadow-lg p-8 w-full max-w-md text-center border-b-4 border-[#fff]">
+						<span className="text-5xl mb-4 block">🛠️</span>
+						<h2 className="text-2xl font-bold text-[#fff] mb-2">Why Refactor?</h2>
+						<p className="text-[#fff]/80 mb-2">Cleaner code is easier to maintain, debug, and scale. Let AI do the heavy lifting for you!</p>
+						<p className="text-[#fff]/60 text-sm">Supports JS, TS, Python, Java, and more.</p>
 					</div>
-				)}
-				{output && (
-					<div className="mt-8 bg-gradient-to-br from-[#393e6e] to-[#232946] p-5 rounded-xl border border-[#393e6e] relative shadow-lg animate-fade-in">
-						<h2 className="font-semibold mb-3 text-[#a7adc6] flex items-center gap-2">
-							<span className="animate-bounce">🧠</span> Refactored Code
-						</h2>
-						<button
-							className={`absolute top-5 right-5 px-3 py-1 text-xs font-semibold rounded transition flex items-center gap-1 ${
-								copied
-									? 'bg-[#a7e7c7] text-[#232946]'
-									: 'bg-[#f4acb7] text-[#232946] hover:bg-[#a7c7e7]'
-							}`}
-							onClick={handleCopy}
-							title="Copy to clipboard"
-						>
-							{copied ? (
-								<>
-									<span className="animate-pulse">✅</span> Copied
-								</>
-							) : (
-								<>
-									<span>📋</span> Copy
-								</>
-							)}
-						</button>
-						<pre className="bg-[#181a2a] text-[#a7e7c7] p-4 rounded-lg overflow-x-auto whitespace-pre-wrap text-sm font-mono border border-[#232946] transition-all duration-300 animate-fade-in">
-							{output}
-						</pre>
-					</div>
-				)}
-				<style jsx global>{`
-					@keyframes fade-in {
-						0% {
-							opacity: 0;
-							transform: translateY(16px);
-						}
-						100% {
-							opacity: 1;
-							transform: none;
-						}
-					}
-					.animate-fade-in {
-						animation: fade-in 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
-					}
-					@keyframes wiggle {
-						0%,
-						100% {
-							transform: rotate(-3deg);
-						}
-						50% {
-							transform: rotate(3deg);
-						}
-					}
-					.animate-wiggle {
-						animation: wiggle 0.7s infinite;
-						display: inline-block;
-					}
-					@keyframes shake {
-						0%,
-						100% {
-							transform: translateX(0);
-						}
-						20%,
-						60% {
-							transform: translateX(-6px);
-						}
-						40%,
-						80% {
-							transform: translateX(6px);
-						}
-					}
-					.animate-shake {
-						animation: shake 0.5s;
-					}
-				`}</style>
-			</div>
+				</aside>
+			</main>
 		</div>
 	);
 }
