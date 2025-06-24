@@ -1,6 +1,6 @@
-# 🧠 ShadowAI – AI-Powered Dev Onboarding & Code Intelligence Assistant
+# 🧠 Senior Dev AI – AI-Powered Dev Onboarding & Code Intelligence Assistant
 
-ShadowAI is a full-stack AI assistant designed to help **new developers and interns** quickly get productive with unfamiliar codebases. It combines smart language models, real-time screen awareness, and Git integration to reduce onboarding friction and boost confidence from day one.
+Senior Dev AI is a full-stack AI assistant designed to help **new developers and interns** quickly get productive with unfamiliar codebases. It combines smart language models, real-time screen awareness, and Git integration to reduce onboarding friction and boost confidence from day one.
 
 ---
 
